@@ -22,6 +22,7 @@ const resetButton = document.querySelector('.reset');
 const generationLabel = document.querySelector('.generation-label');
 
 /* function that sets the grids */
+/* Impure */
 const initializeGrids = () => {
   for (let i = 0; i < rows; i++) {
     grid[i] = new Array(cols);
@@ -30,6 +31,7 @@ const initializeGrids = () => {
 };
 
 /* function that resets grids values */
+/* Impure */
 const resetGrids = () => {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -40,6 +42,7 @@ const resetGrids = () => {
 };
 
 /* Copy nextGrid to grid, and reset nextGrid */
+/* Impure */
 const copyAndResetGrid = () => {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -50,6 +53,7 @@ const copyAndResetGrid = () => {
 };
 
 /* function that initializes the grid */
+/* Impure */
 const initialize = () => {
   createTable();
   initializeGrids();
@@ -57,6 +61,7 @@ const initialize = () => {
 };
 
 /* function that creates the board */
+/* Pure function! */
 const createTable = () => {
   const grid = document.querySelector('.grid');
   const table = document.createElement('table');
@@ -80,6 +85,7 @@ const createTable = () => {
 };
 
 /* function to handles when user clicks a cell if game is not started */
+/* Impure */
 const cellClickHandler = (e) => {
   if (playButton.innerText === 'Play') {
     /* Replace the c in the ID with nothing so we are just left with the numbers of the row and the column */
@@ -100,6 +106,7 @@ const cellClickHandler = (e) => {
 };
 
 /* function that updates the grid */
+/* Impure */
 const updateView = () => {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -113,6 +120,7 @@ const updateView = () => {
 };
 
 /* function that handles when Play button is pressed */
+/* Impure */
 const playButtonHandler = () => {
   /* Handling which buttons must be shown when the game has been started/reseted */
   if (playButton.innerText === 'Play') {
@@ -134,6 +142,7 @@ const playButtonHandler = () => {
 playButton.onclick = playButtonHandler;
 
 /* function that handles when Clear button is pressed */
+/* Impure */
 const clearButtonHandler = () => {
   /* Stopping the execution of next Generation calculation and view update */
   clearTimeout(timer);
@@ -150,6 +159,7 @@ const clearButtonHandler = () => {
 clearButton.onclick = clearButtonHandler;
 
 /* function that first clears the current board and makes each cell dead or alive state randomly when Randomize button is pressed */
+/* Impure */
 const randomizeButtonHandler = () => {
   if (!playing) {
     for (let i = 0; i < rows; i++) {
@@ -173,6 +183,7 @@ const randomizeButtonHandler = () => {
 randomizeButton.onclick = randomizeButtonHandler;
 
 /* function that handles when Reset button is clicked */
+/* Impure */
 const resetButtonHandler = () => {
   /* Stopping the game */
   playing = false;
@@ -190,6 +201,7 @@ const resetButtonHandler = () => {
 resetButton.onclick = resetButtonHandler;
 
 /* function that runs the game */
+/* Impure */
 const play = () => {
   /* Getting the next Generation of cells */
   computeNextGen();
@@ -205,6 +217,7 @@ const play = () => {
 };
 
 /* function to get the grid for the next generation applying Conway's rules */
+/* Impure */
 const computeNextGen = () => {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -219,6 +232,7 @@ const computeNextGen = () => {
 };
 
 /* function that checks which of Conway's conditions is met */
+/* Pure Function! */
 const applyRules = (row, col) => {
   const numNeighbors = countNeighbors(row, col);
 
@@ -238,6 +252,7 @@ const applyRules = (row, col) => {
 };
 
 /* function that returns how many neighbors a cell has */
+/* Pure Function! */
 const countNeighbors = (row, col) => {
   let count = 0;
 
